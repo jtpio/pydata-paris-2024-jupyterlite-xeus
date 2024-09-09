@@ -9,4 +9,7 @@ dependencies:
   - jupyterlab-night
   - jupyterlab-language-pack-fr-FR
   - jupyterlite-core >=0.4.0,<0.5.0
-  - voici >=0.7.0,<0.8.0
+  - voici-core >=0.7.0,<0.8.0
+  - pip:
+    # TODO: move to conda-forge when available
+    - jupyterlite-xeus >=0.2.0a0

@@ -16,9 +16,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install mamba
-        uses: mamba-org/provision-with-micromamba@main
+        uses: mamba-org/setup-micromamba@v1
         with:
-          micromamba-version: '1.4.2'
+          micromamba-version: '1.5.9-0'
           environment-file: 'build-environment.yml'
 
       - name: Copy the presentation to the contents directory
@@ -29,7 +29,7 @@ jobs:
         shell: bash -l {0}
         run: |
           cp README.md notebooks
-          voici build --contents notebooks --output-dir dist --apps lab --apps retro
+          voici build --contents notebooks --output-dir dist
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
