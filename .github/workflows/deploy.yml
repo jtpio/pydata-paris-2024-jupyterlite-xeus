@@ -1,0 +1,54 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install mamba
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          micromamba-version: '1.4.2'
+          environment-file: 'build-environment.yml'
+
+      - name: Copy the presentation to the contents directory
+        run: |
+          npx --yes @marp-team/marp-cli@2.5.0 index.md -o notebooks/index.html --html
+
+      - name: Build the JupyterLite site
+        shell: bash -l {0}
+        run: |
+          cp README.md notebooks
+          voici build --contents notebooks --output-dir dist --apps lab --apps retro
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
