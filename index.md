@@ -34,7 +34,7 @@ iframe {
 
 - :bust_in_silhouette: Ian Thomas
 - :bust_in_silhouette: Jeremy Tuloup
-
+- :bust_in_silhouette: Thorsten Beier
 
 ---
 
