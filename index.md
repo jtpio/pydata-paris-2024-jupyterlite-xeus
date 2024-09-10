@@ -356,3 +356,47 @@ Thanks to all the contributors of JupyterLite, Pyodide, Emscripten Forge, and th
 
 - Presentation: https://github.com/jtpio/pydata-paris-2024-jupyterlite-xeus
 - Live version: https://jtpio.github.io/pydata-paris-2024-jupyterlite-xeus/files/index.html
+
+---
+
+# Emscripten Forge
+
+* conda-forge is becoming the de-facto standard for packaging for scientific computing
+* despite the success fo wasm, emscripten-wasm32 is not yet supported by conda-forge
+* 'poor mans' conda-forge for the emscripten-wasm32 target:
+  * mono-repo with recipes
+  * CI to build and test packages
+  * Open source quetz server to host packages
+
+News:
+ * removed boa in favour of rattler-build 
+ * CFEP to add emscripten-forge to conda-forge
+ * R packages
+
+# Emscripten Forge vs Pyodide
+
+
+* pyodide is a a python distribution for the browser / emscripten-wasm32
+* pyodide is the 'pip' way of getting python packages in the browser
+* emscripten-forge is the 'conda' way of getting python packages in the browser
+* emscripten-forge is language agnostic and can be used to build any language for the browser:
+  * Python
+  * R
+  * C++
+  * Lua
+* Community driven
+
+
+--- 
+# Xeus Lite Kernels
+
+* xeus-python
+* xeus-lua
+* xeus-javascript
+
+Coming soon:
+* xeus-r
+* xeus-cpp
+
+---
+# Mamba 
