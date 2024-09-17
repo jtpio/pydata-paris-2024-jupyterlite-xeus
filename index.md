@@ -7,6 +7,9 @@ style: |
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
+  .center {
+    text-align: center;
+  }
 ---
 
 <style>
@@ -32,8 +35,8 @@ iframe {
 
 #### :date: 2024-09-25
 
-- :bust_in_silhouette: Ian Thomas
 - :bust_in_silhouette: Jeremy Tuloup
+- :bust_in_silhouette: Ian Thomas
 - :bust_in_silhouette: Thorsten Beier
 
 ---
@@ -344,7 +347,186 @@ voici build --contents notebooks --apps lab --app retro
 
 ---
 
-# TODO
+# Terminal
+
+![bg fit right:40%](https://raw.githubusercontent.com/jupyterlite/terminal/main/screenshot.png)
+
+JupyterLab
+
+- Terminal connects to a real shell running on the server
+
+JupyterLite
+
+- Now has experimental support for a Terminal running in the browser
+- Early stage work in progress
+
+---
+
+<video
+  controls
+  width="100%"
+  height="600px"
+  src="../img/terminal.m4v">
+</video>
+
+---
+
+# The quartet of tools
+
+<div class="columns">
+<div>
+
+## JupyterLite
+
+- The browser application
+
+## Emscripten-forge
+
+- Recipes
+- Building and uploading packages
+
+</div>
+<div>
+
+## Xeus
+
+- Programming language kernels
+
+## Mamba
+
+- Package manager
+- Resolving and installing packages
+
+</div>
+</div>
+
+<div class="center">
+<img width="10%" src="https://raw.githubusercontent.com/jupyterlite/jupyterlite/main/docs/_static/icon.svg">
+<img width="20%" src="https://raw.githubusercontent.com/jupyter-xeus/xeus/main/docs/source/xeus.svg">
+<img width="30%" src="https://raw.githubusercontent.com/mamba-org/mamba/main/docs/assets/mamba_header.png">
+</div>
+
+---
+
+# What is a kernel?
+
+![center](../img/kernel.svg)
+
+---
+
+# JupyterLite kernels: pyodide and xeus
+
+![center](../img/pyodide-xeus.svg)
+
+---
+
+# Python kernel differences
+
+&nbsp; | pyodide | xeus
+--- | ---- | ---- |
+Build and package system | pip-based | conda-based
+Install packages at runtime | ✅ `%pip install ipympl` | ❌
+Supports pre-installed packages | ❌ | ✅
+Supports `time.sleep` | ❌ | ✅
+
+---
+
+# :hammer: Emscripten-forge and mamba
+
+## Building WebAssembly packages
+
+platform | pip-based toolchain | conda-based toolchain
+--- | ---- | ---- |
+noarch, linux, macos, windows | PyPI | conda-forge
+emscripten-wasm32 | pyodide | emscripten-forge
+
+---
+
+# How do I use package 'x' in JupyterLite?
+
+- Is it a pure Python package?
+
+  - Noarch wheel from `PyPI` for pyodide
+  - Noarch package from `conda-forge` for xeus
+
+- Does it need compiling?
+
+  - `Pyodide` recipe at https://github.com/pyodide/pyodide
+  - `Emscripten-forge` recipe at https://github.com/emscripten-forge/recipes
+
+---
+
+# Create a JupyterLite deployment
+
+- Demo repos:
+
+  - For pyodide kernel https://github.com/jupyterlite/demo
+  - For xeus-python kernel https://github.com/jupyterlite/xeus-python-demo
+
+- Inputs required:
+
+  - What packages to include (`requirements.txt` or `environment.yml`)?
+  - What content to include (notebooks, data files, etc)?
+  - Build enviromment (`build-environment.yml`) containing `jupyterlite-core`
+
+---
+
+# Local deployment with both python kernels
+
+<div class="columns">
+<div>
+
+`build-environment.yml`:
+```yml
+name: jlite-build
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - jupyter_server
+  - jupyterlite-core
+  - jupyterlite-pyodide-kernel
+  - jupyterlite-xeus
+```
+
+</div>
+<div>
+
+`environment.yml`:
+```yml
+name: jlite-demo
+channels:
+  - https://repo.mamba.pm/emscripten-forge
+  - conda-forge
+dependencies:
+  - xeus-python
+  - ipympl
+  - matplotlib
+```
+
+</div>
+</div>
+
+Sequence of commands:
+
+```bash
+micromamba create -f build-environment.yml
+micromamba activate jlite-build
+jupyter lite build --contents contents
+jupyter lite serve
+```
+
+---
+
+# Summary of improvements in the last year
+
+- More stable and easy-to-use build system in Emscripten-forge `rattler-build`
+- Experimental Terminal in JupyterLite
+
+# Roadmap
+
+- R kernel
+- Proposal to move emscripten-forge to conda-forge
 
 ---
 
