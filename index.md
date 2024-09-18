@@ -305,7 +305,7 @@ jupyter lite build --contents notebooks
 
 # Deploy static web applications with Voici
 
-![center](https://raw.githubusercontent.com/voila-dashboards/voila/main/docs/source/voila-logo.svg)
+![center](https://raw.githubusercontent.com/voila-dashboards/voici/main/docs/voici-logo.svg)
 
 ---
 
@@ -366,7 +366,7 @@ JupyterLite
   controls
   width="100%"
   height="600px"
-  src="../img/terminal.m4v">
+  src="https://raw.githubusercontent.com/jtpio/pydata-paris-2024-jupyterlite-xeus/main/img/terminal.m4v">
 </video>
 
 ---
@@ -410,13 +410,13 @@ JupyterLite
 
 # What is a kernel?
 
-![center](../img/kernel.svg)
+![center](https://raw.githubusercontent.com/jtpio/pydata-paris-2024-jupyterlite-xeus/main/img/kernel.svg)
 
 ---
 
 # JupyterLite kernels: pyodide and xeus
 
-![center](../img/pyodide-xeus.svg)
+![center](https://raw.githubusercontent.com/jtpio/pydata-paris-2024-jupyterlite-xeus/main/img/pyodide-xeus.svg)
 
 ---
 
