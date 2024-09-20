@@ -527,6 +527,7 @@ jupyter lite serve
 
 - R kernel
 - Proposal to move emscripten-forge to conda-forge
+- Xeus kernel install packages at runtime
 
 ---
 
