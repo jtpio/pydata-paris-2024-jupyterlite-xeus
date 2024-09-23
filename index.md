@@ -288,10 +288,6 @@ Quickstart: https://github.com/jupyterlite/xeus-python-demo
 
 ---
 
-#
-
----
-
 # Deploy static web applications with Voici
 
 ![center](https://raw.githubusercontent.com/voila-dashboards/voici/main/docs/voici-logo.svg)
@@ -304,6 +300,15 @@ Quickstart: https://github.com/jupyterlite/xeus-python-demo
   height="600px"
   src="https://user-images.githubusercontent.com/591645/236285012-1c9afa23-8da4-45ea-9b0b-10c5cd2087f0.mp4">
 </video>
+
+---
+
+# :framed_picture: Voici Gallery
+
+- Live: https://voila-dashboards.github.io/voici-gallery
+- Add your example: https://github.com/voila-dashboards/voici-gallery
+
+![center h:400](https://github.com/user-attachments/assets/772fd07b-af10-4718-9b59-a6e4bdd02c0a)
 
 ---
 
@@ -341,7 +346,7 @@ Quickstart: https://github.com/jupyterlite/xeus-python-demo
 
 ---
 
-# Real Time Collaboration
+# :busts_in_silhouette: Real Time Collaboration
 
 
 <video
