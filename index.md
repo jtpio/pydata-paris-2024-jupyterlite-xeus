@@ -43,7 +43,10 @@ iframe {
 
 # About
 
-TODO
+- :bust_in_silhouette: Jeremy Tuloup
+- :bust_in_silhouette: Ian Thomas
+- :bust_in_silhouette: Thorsten Beier
+- :astronaut: QuantStack
 
 ---
 
@@ -276,24 +279,6 @@ Quickstart: https://github.com/jupyterlite/xeus-python-demo
 
 ---
 
-# :notebook: Adding notebooks, files and static assets
-
-Create a `notebooks` folder and add a notebook and a CSV file:
-
-```bash
-ls notebooks
-
-demo.ipynb iris.csv
-```
-
-Build with the `--contents` flag:
-
-```bash
-jupyter lite build --contents notebooks
-```
-
----
-
 <video
   controls
   width="100%"
@@ -303,28 +288,13 @@ jupyter lite build --contents notebooks
 
 ---
 
-# Deploy static web applications with Voici
-
-![center](https://raw.githubusercontent.com/voila-dashboards/voici/main/docs/voici-logo.svg)
+#
 
 ---
 
+# Deploy static web applications with Voici
 
-# Before
-
-```shell
-jupyter lite build --contents notebooks
-```
-
-# After
-
-```bash
-# build with the Voici CLI
-voici build --contents notebooks
-
-# to keep the JupyterLab and Notebook interfaces available
-voici build --contents notebooks --apps lab --app retro
-```
+![center](https://raw.githubusercontent.com/voila-dashboards/voici/main/docs/voici-logo.svg)
 
 ---
 
@@ -344,6 +314,43 @@ voici build --contents notebooks --apps lab --app retro
 - Simpler for users (no need to install Python and other packages locally)
 - Educational use cases
 - Reproducibility time capsule
+
+![center h:300](https://github.com/jtpio/jobim-2024/assets/591645/4686d0f6-8c4a-4195-8420-74a71ff0b510)
+
+---
+
+
+# :test_tube: Current developments
+
+- In-browser terminal
+- AI code completions and chat
+- Real Time Collaboration via WebRTC
+- Emscripten Forge and Conda Forge
+
+---
+
+# :sparkles: AI code completions and chat
+
+<video
+  controls
+  width="100%"
+  height="600px"
+  src="https://github.com/jupyterlite/jupyterlab-codestral/assets/591645/855c4e3e-3a63-4868-8052-5c9909922c21">
+
+</video>
+
+---
+
+# Real Time Collaboration
+
+
+<video
+  controls
+  width="100%"
+  height="600px"
+  src="TODO">
+
+</video>
 
 ---
 
