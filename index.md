@@ -353,7 +353,7 @@ Quickstart: https://github.com/jupyterlite/xeus-python-demo
   controls
   width="100%"
   height="600px"
-  src="TODO">
+  src="https://github.com/user-attachments/assets/ab03433c-2ac2-4856-8e83-b5cc17ed3f6f">
 
 </video>
 
