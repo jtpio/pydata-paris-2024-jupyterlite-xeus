@@ -479,7 +479,7 @@ emscripten-wasm32 | pyodide | emscripten-forge
 
   - What packages to include (`requirements.txt` or `environment.yml`)?
   - What content to include (notebooks, data files, etc)?
-  - Build enviromment (`build-environment.yml`) containing `jupyterlite-core`
+  - Build environment (`build-environment.yml`) containing `jupyterlite-core`
 
 ---
 
