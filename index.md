@@ -7,6 +7,9 @@ style: |
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
+  .center {
+    text-align: center;
+  }
 ---
 
 <style>
@@ -32,15 +35,18 @@ iframe {
 
 #### :date: 2024-09-25
 
-- :bust_in_silhouette: Ian Thomas
 - :bust_in_silhouette: Jeremy Tuloup
-
+- :bust_in_silhouette: Ian Thomas
+- :bust_in_silhouette: Thorsten Beier
 
 ---
 
 # About
 
-TODO
+- :bust_in_silhouette: Jeremy Tuloup
+- :bust_in_silhouette: Ian Thomas
+- :bust_in_silhouette: Thorsten Beier
+- :astronaut: QuantStack
 
 ---
 
@@ -273,24 +279,6 @@ Quickstart: https://github.com/jupyterlite/xeus-python-demo
 
 ---
 
-# :notebook: Adding notebooks, files and static assets
-
-Create a `notebooks` folder and add a notebook and a CSV file:
-
-```bash
-ls notebooks
-
-demo.ipynb iris.csv
-```
-
-Build with the `--contents` flag:
-
-```bash
-jupyter lite build --contents notebooks
-```
-
----
-
 <video
   controls
   width="100%"
@@ -302,26 +290,7 @@ jupyter lite build --contents notebooks
 
 # Deploy static web applications with Voici
 
-![center](https://raw.githubusercontent.com/voila-dashboards/voila/main/docs/source/voila-logo.svg)
-
----
-
-
-# Before
-
-```shell
-jupyter lite build --contents notebooks
-```
-
-# After
-
-```bash
-# build with the Voici CLI
-voici build --contents notebooks
-
-# to keep the JupyterLab and Notebook interfaces available
-voici build --contents notebooks --apps lab --app retro
-```
+![center](https://raw.githubusercontent.com/voila-dashboards/voici/main/docs/voici-logo.svg)
 
 ---
 
@@ -334,6 +303,15 @@ voici build --contents notebooks --apps lab --app retro
 
 ---
 
+# :framed_picture: Voici Gallery
+
+- Live: https://voila-dashboards.github.io/voici-gallery
+- Add your example: https://github.com/voila-dashboards/voici-gallery
+
+![center h:400](https://github.com/user-attachments/assets/772fd07b-af10-4718-9b59-a6e4bdd02c0a)
+
+---
+
 # :muscle: Strengths
 
 - Easy to deploy and scale (static files)
@@ -342,9 +320,226 @@ voici build --contents notebooks --apps lab --app retro
 - Educational use cases
 - Reproducibility time capsule
 
+![center h:300](https://github.com/jtpio/jobim-2024/assets/591645/4686d0f6-8c4a-4195-8420-74a71ff0b510)
+
 ---
 
-# TODO
+
+# :test_tube: Current developments
+
+- In-browser terminal
+- AI code completions and chat
+- Real Time Collaboration via WebRTC
+- Emscripten Forge and Conda Forge
+
+---
+
+# :sparkles: AI code completions and chat
+
+<video
+  controls
+  width="100%"
+  height="600px"
+  src="https://github.com/jupyterlite/jupyterlab-codestral/assets/591645/855c4e3e-3a63-4868-8052-5c9909922c21">
+
+</video>
+
+---
+
+# :busts_in_silhouette: Real Time Collaboration
+
+
+<video
+  controls
+  width="100%"
+  height="600px"
+  src="https://github.com/user-attachments/assets/ab03433c-2ac2-4856-8e83-b5cc17ed3f6f">
+
+</video>
+
+---
+
+# Terminal
+
+![bg fit right:40%](https://raw.githubusercontent.com/jupyterlite/terminal/main/screenshot.png)
+
+JupyterLab
+
+- Terminal connects to a real shell running on the server
+
+JupyterLite
+
+- Now has experimental support for a Terminal running in the browser
+- Early stage work in progress
+
+---
+
+<video
+  controls
+  width="100%"
+  height="600px"
+  src="https://raw.githubusercontent.com/jtpio/pydata-paris-2024-jupyterlite-xeus/main/img/terminal.m4v">
+</video>
+
+---
+
+# The quartet of tools
+
+<div class="columns">
+<div>
+
+## JupyterLite
+
+- The browser application
+
+## Emscripten-forge
+
+- Recipes
+- Building and uploading packages
+
+</div>
+<div>
+
+## Xeus
+
+- Programming language kernels
+
+## Mamba
+
+- Package manager
+- Resolving and installing packages
+
+</div>
+</div>
+
+<div class="center">
+<img width="10%" src="https://raw.githubusercontent.com/jupyterlite/jupyterlite/main/docs/_static/icon.svg">
+<img width="20%" src="https://raw.githubusercontent.com/jupyter-xeus/xeus/main/docs/source/xeus.svg">
+<img width="30%" src="https://raw.githubusercontent.com/mamba-org/mamba/main/docs/assets/mamba_header.png">
+</div>
+
+---
+
+# What is a kernel?
+
+![center](https://raw.githubusercontent.com/jtpio/pydata-paris-2024-jupyterlite-xeus/main/img/kernel.svg)
+
+---
+
+# JupyterLite kernels: pyodide and xeus
+
+![center](https://raw.githubusercontent.com/jtpio/pydata-paris-2024-jupyterlite-xeus/main/img/pyodide-xeus.svg)
+
+---
+
+# Python kernel differences
+
+&nbsp; | pyodide | xeus
+--- | ---- | ---- |
+Build and package system | pip-based | conda-based
+Install packages at runtime | ✅ `%pip install ipympl` | ❌
+Supports pre-installed packages | ❌ | ✅
+Supports `time.sleep` | ❌ | ✅
+
+---
+
+# :hammer: Emscripten-forge and mamba
+
+## Building WebAssembly packages
+
+platform | pip-based toolchain | conda-based toolchain
+--- | ---- | ---- |
+noarch, linux, macos, windows | PyPI | conda-forge
+emscripten-wasm32 | pyodide | emscripten-forge
+
+---
+
+# How do I use package 'x' in JupyterLite?
+
+- Is it a pure Python package?
+
+  - Noarch wheel from `PyPI` for pyodide
+  - Noarch package from `conda-forge` for xeus
+
+- Does it need compiling?
+
+  - `Pyodide` recipe at https://github.com/pyodide/pyodide
+  - `Emscripten-forge` recipe at https://github.com/emscripten-forge/recipes
+
+---
+
+# Create a JupyterLite deployment
+
+- Demo repos:
+
+  - For pyodide kernel https://github.com/jupyterlite/demo
+  - For xeus-python kernel https://github.com/jupyterlite/xeus-python-demo
+
+- Inputs required:
+
+  - What packages to include (`requirements.txt` or `environment.yml`)?
+  - What content to include (notebooks, data files, etc)?
+  - Build environment (`build-environment.yml`) containing `jupyterlite-core`
+
+---
+
+# Local deployment with both python kernels
+
+<div class="columns">
+<div>
+
+`build-environment.yml`:
+```yml
+name: jlite-build
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - jupyter_server
+  - jupyterlite-core
+  - jupyterlite-pyodide-kernel
+  - jupyterlite-xeus
+```
+
+</div>
+<div>
+
+`environment.yml`:
+```yml
+name: jlite-demo
+channels:
+  - https://repo.mamba.pm/emscripten-forge
+  - conda-forge
+dependencies:
+  - xeus-python
+  - ipympl
+  - matplotlib
+```
+
+</div>
+</div>
+
+Sequence of commands:
+
+```bash
+micromamba create -f build-environment.yml
+micromamba activate jlite-build
+jupyter lite build --contents contents
+jupyter lite serve
+```
+
+---
+
+# Summary of improvements in the last year
+
+- More stable and easy-to-use build system in Emscripten-forge `rattler-build`
+- Experimental Terminal in JupyterLite
+
+# Roadmap
+
+- R kernel
+- Proposal to move emscripten-forge to conda-forge
+- Xeus kernel install packages at runtime
 
 ---
 
